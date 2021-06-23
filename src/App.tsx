@@ -1,14 +1,16 @@
 import React from 'react';
 import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+import PackageCard from './features/package/PackageCard';
 import './App.css';
+import { Package, PackageId } from '@ftcg/core/src/classes';
 
 function App() {
+  let pack = new Package(new PackageId("help", "me"));
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
+        <PackageCard package={pack}/>
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
