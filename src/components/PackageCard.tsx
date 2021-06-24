@@ -1,6 +1,7 @@
 import React from "react";
-import { Button, Card, Image, Icon, a } from "semantic-ui-react";
+import { Button, Card, Image, Icon, Label} from "semantic-ui-react";
 import { Package } from "@ftcg/core";
+
 interface PackageCardProps{
     package: Package;
 }
@@ -8,25 +9,23 @@ interface PackageCardProps{
 export default class PackageCard extends React.Component<PackageCardProps> {
     render() {
         const pack = this.props.package;
+      let labels = pack.tags.map(x=> <Label>{x.name}</Label>)
       return (
         <Card>
           <Image
-            src={pack.thumbnail || "https://react.semantic-ui.com/images/avatar/large/daniel.jpg"}
+            src={pack.thumbnail}
             wrapped
             ui={false}
           />
           <Card.Content>
             <Card.Header>{pack.title}</Card.Header>
-            <Card.Meta>{pack.thumbnail}</Card.Meta>
+            <Card.Meta>v{pack.version} • {pack.name.scope}/{pack.name.name} • {pack.updated}</Card.Meta>
             <Card.Description>
             {pack.description}
             </Card.Description>
           </Card.Content>
           <Card.Content extra>
-            <a href="#help">
-              <Icon name="user" />
-              10 Friends
-            </a>
+            {labels}
           </Card.Content>
         </Card>
       );
