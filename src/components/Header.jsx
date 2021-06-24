@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import { Menu } from 'semantic-ui-react'
+import { Input, Menu } from 'semantic-ui-react'
 import Logo from './Logo'
-
-export default class MenuExampleStackable extends Component {
-  state = {}
+export default class MenuExampleSecondary extends Component {
+  state = { activeItem: 'home' }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
@@ -11,34 +10,32 @@ export default class MenuExampleStackable extends Component {
     const { activeItem } = this.state
 
     return (
-      <Menu stackable>
-        <Menu.Item>
-        <Logo />
+      <Menu>
+        <Menu.Item name='home'
+          href='/'>
+          <Logo></Logo>
         </Menu.Item>
 
         <Menu.Item
-          name='features'
-          active={activeItem === 'features'}
+          name='messages'
+          active={activeItem === 'messages'}
           onClick={this.handleItemClick}
-        >
-          Features
-        </Menu.Item>
-
+        />
         <Menu.Item
-          name='testimonials'
-          active={activeItem === 'testimonials'}
+          name='friends'
+          active={activeItem === 'friends'}
           onClick={this.handleItemClick}
-        >
-          Testimonials
-        </Menu.Item>
-
-        <Menu.Item
-          name='sign-in'
-          active={activeItem === 'sign-in'}
-          onClick={this.handleItemClick}
-        >
-          Sign-in
-        </Menu.Item>
+        />
+        <Menu.Menu position='right'>
+          <Menu.Item>
+            <Input icon='search' placeholder='Search...' />
+          </Menu.Item>
+          <Menu.Item
+            name='logout'
+            active={activeItem === 'logout'}
+            onClick={this.handleItemClick}
+          />
+        </Menu.Menu>
       </Menu>
     )
   }

@@ -1,2 +1,2 @@
-import {ReactComponent as Logo} from '../logo.svg';
-export default Logo;
+import logo from '../logo.svg';
+export default () => <img src={logo} />;
