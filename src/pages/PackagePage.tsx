@@ -25,7 +25,10 @@ const panes = [
   placeholderTab("files", "folder"),
 ]
 const menu = { stackable: true };
-const DEFAULT_STATE = { package: new Package(new PackageId("fuck", "mylife")) };
+const DEFAULT_STATE = {
+  loading: true,
+  package: new Package(new PackageId("fuck", "mylife"))
+};
 
 interface StaticContext {
   statusCode?: number;
@@ -41,13 +44,15 @@ interface Props extends RouteComponentProps<Params, StaticContext, unknown> {
 }
 
 interface State {
+  loading: boolean;
   package: Package;
 }
 
 class PackagePage extends Component<Props, State> {
-  state = DEFAULT_STATE;
+  //state = DEFAULT_STATE;
   componentDidMount() {
     const id = new PackageId(this.props.match.params.scope, this.props.match.params.name);
+    this.setState(DEFAULT_STATE);
     this.setState({
       package: new Package(id)
     });
