@@ -6,6 +6,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import Logo from './components/Logo';
 import About from './pages/About';
 import Home from './pages/Home';
 //import Header from './components/Header';
@@ -36,10 +37,10 @@ function MyRouter() {
         <Route path="/about">
           <About />
         </Route>
-        <Route path="/package/:scope/:name/:version">
+        <Route path="/packages/:scope/:name/:version">
           <PackagePage />
         </Route>
-        <Route path="/package/:scope/:name">
+        <Route path="/packages/:scope/:name">
           <PackagePage />
         </Route>
       </Switch>
@@ -60,7 +61,7 @@ export default function App() {
         console.log(collapsed, type);
       }}
     >
-      <div className="logo" />
+      <Logo />
       <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}>
         <Menu.Item key="1" icon={<UserOutlined />}>
           nav 1
